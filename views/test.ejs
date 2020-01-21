@@ -1,0 +1,20 @@
+<!-- Partials at Top -->
+
+<% include partials/header %>
+<% include partials/nav %>
+
+<h1>Hello from test!</h1>
+
+
+
+    <h1>{{ title }}</h1>
+    <p>Welcome to {{ title }}</p>
+    <form method='post' action='/upload' enctype="multipart/form-data">
+      <input type="text" name="firstname"></input>
+      <input type='file' name='photo'>
+        <input type='submit'>
+  </form>
+
+<div class="container">
+  <% include partials/footer %>
+</div>

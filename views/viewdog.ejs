@@ -1,0 +1,53 @@
+<!--Partials at top-->
+<% include partials/header %>
+<% include partials/nav %>
+
+
+<!--Body Section Here-->
+
+<div class="container">
+    <div class="row" style="padding-top: 1em; margin-bottom: -2.5em">
+        <div class="col"><h3>View Dog</h3>
+               <!-- determine whether results avail to show -->
+        <br><strong><%= message %></strong>
+        </div>
+    </div>
+    <div class="row">
+	<!-- Header Row -->
+      <% listResults.forEach(function(dog) { %>
+        <div class="col-8"></div>
+    <div class="col">
+      <a href="/dogs/<%=dog.dog_id %>/edit" class="btn btn-primary" role="button">Edit</a>
+      <a href="/dogs/<%=dog.dog_id %>/delete" class="btn btn-danger" role="button">Delete</a>
+    </div>
+  </div>
+	<!-- Animal Data -->
+  <div class="row">
+    <div class="col-5">
+      <img class="img-fluid img-thumbnail" src="/images/<%= dog.photo %>" style="margin-bottom: 2em">
+    </div>
+    <div class="col">
+     <h4><%= dog.name %></h4>
+        <strong>Status: </strong> <%=dog.status %><br>
+        <strong>Sex: </strong> <%=dog.sex %> <br>
+        <strong>DOB: </strong> <%= dog.dob %><br>
+        <strong>ID: </strong> <%=dog.dog_id %> <br>
+        <strong>Breed: </strong><%=dog.breed %> <br>
+        <strong>Color: </strong><%=dog.color %> <br>
+	      <strong>Location: </strong> <%=dog.l_name %><br>
+        <strong>Description: </strong><%=dog.description %>
+
+    </div>
+    <div class="col">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+    </div>
+  </div>
+  <% }); %>
+</div>
+
+
+<!--Footer Section Here-->
+<% include partials/footer %>

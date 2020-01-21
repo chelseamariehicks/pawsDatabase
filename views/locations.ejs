@@ -1,0 +1,50 @@
+<!--Partials at Top-->
+
+  <% include partials/header %>
+  <% include partials/nav %>
+
+<!-- Alternate image -->
+  <div class="col-md-12" style="max-width:100%; padding:0px"><img class="img-fluid" src="/images/locations-alt.png" /></div>
+
+
+  <div class="container">
+    <!-- Body-->
+    <div class="row with-margin">
+    </div>
+    <div class="row with-margin">
+        <div class="col-lg-6">
+            <h3>View All Locations</h3>
+    
+        </div>
+        <div class="col-lg-6">
+            <a class="btn btn-primary float-right" href="/stafflocation">View Staff by Location</a>
+            <a class="btn btn-primary float-right" href="/locations/new">Add New Location</a>
+        </div>
+    </div>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Location ID#</th>
+                <th scope="col">Location Name</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- dynamically build table DOM based on dbs results -->
+                    <% listResults.forEach((location, index) => { %>
+                <tr>
+                    <th scope="row"><%= location.loc_id %></th>
+                    <td><%= location.l_name %></td>
+                </tr>
+                <% }) %>
+
+        </tbody>
+    </table>
+
+</div>
+
+
+<!--Footer Section Here-->
+<% include partials/footer %>
+

@@ -1,0 +1,50 @@
+<!--Partials at top-->
+<% include partials/header %>
+<% include partials/nav %>
+
+<!--Body Section Here-->
+<div class="container"style="padding-top: 1em; padding-bottom: 1em">
+    <h3>Description of site pages:</h3>
+</div>
+<div class ="container">
+    <div class="table-wrapper">
+      <table class="table table-hovered">
+        <thead class="thead-dark">
+        <tr>
+            <th scope="col">Page Title</th>
+            <th scope="col">Description</th>
+        </tr>
+        <tr>
+              <td>Home</td>
+              <td>Pre-populated with data of current cats and animals available for adoption; will include search/SELECT feature</td>
+        </tr>
+        <tr>
+            <td>Dogs</td>
+            <td>Pre-populated with data from dogs table; includes option to INSERT a new dog or DELETE dog entry; will include search/SELECT feature</td>
+        </tr>
+        <tr>
+            <td>Cats</td>
+            <td>Pre-populated with data from cats table; includes option to INSERT a new cat or DELETE cat entry; will include search/SELECT feature</td>
+        </tr>
+        <tr>
+            <td>Staff</td>
+            <td>Pre-populated with data from staff table; will include option to INSERT, DELETE, and SELECT staff member</td>
+        </tr>
+        <tr>
+            <td>Location</td>
+            <td>Pre-populated with data from location table; will include option to INSERT, DELETE, and SELECT location</td>
+        </tr>
+        <tr>
+            <td>Staff-Location (many-to-many)</td>
+            <td>Will be accessed via a button, "View Staff by Location", on the Locations page that displays the PFC locations and all staff members assigned
+                to each location; will include a DELETE option for each staff member
+            </td>
+        </tr>
+            </thead>
+        </table>
+    </div>
+</div>
+
+
+<!--Footer Section Here-->
+<% include partials/footer %>

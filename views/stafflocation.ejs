@@ -1,0 +1,46 @@
+<!--Partials at Top-->
+
+<% include partials/header %>
+<% include partials/nav %>
+
+
+<div class="container">
+  <!-- Body-->
+  <div class="row with-margin">
+  </div>
+  <div class="row with-margin">
+      <div class="col-lg-8">
+          <h3>Viewing Locations with Staff</h3>
+  
+      </div>
+      <div class="col-lg-4">
+          <a class="btn btn-primary float-right" href="/locations/new">Add New Location</a>
+      </div>
+  </div>
+
+  <table class="table table-striped">
+      <thead>
+          <tr>
+              <th scope="col">Location ID#</th>
+              <th scope="col">Location Name</th>
+              <th scope="col">Staff</th>
+              <th scope="col"></th>
+          </tr>
+      </thead>
+      <tbody>
+          <!-- dynamically build table DOM based on dbs results -->
+                  <% listResults.forEach((location) => { %>
+              <tr>
+                  <th scope="row"><%= location.lid %></th>
+                  <td><%= location.location %></td>
+                  <td><%= location.staffdata %></td>
+                  <td><a class="btn btn-primary float-right" href="/stafflocation/<%= location.lid %>">Edit</a></td>
+              </tr>
+              <% }) %>
+
+      </tbody>
+    </table>
+</div>
+
+<!--Footer Section Here-->
+<% include partials/footer %>

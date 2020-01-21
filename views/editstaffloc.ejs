@@ -1,0 +1,75 @@
+<!--Partials at Top-->
+<% include partials/header %>
+<% include partials/nav %>
+
+
+    <div class="container">
+        <!-- Body-->
+        <div class="row with-margin">
+        </div>
+        <div class="row with-margin">
+            <div class="col-lg-8">
+                <h3>Edit Location-Staff Assignments </h3>
+                <strong>Location ID: </strong> <%= locID %> <br />
+                <strong>Location Name: </strong> <%= listResults[0].location %>
+            </div>
+        </div>
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Staff Name</th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- dynamically build table DOM based on dbs results -->
+                <% listResults.forEach((location) => { %>
+                <tr>
+                    <th scope="row">
+                        <form action="/stafflocation/<%= location.sl_id %>/delete" method="POST">
+
+                            <label for="slid"><%= location.f_name %> <%= location.l_name %> </label><input type="hidden" name="slid" value="<%= location.sl_id %>" />
+                    </th>
+                    <td><button class="btn btn-sm btn-danger">Remove</button> </form> </td>
+                </tr>
+                <% }) %>
+
+                <!-- check whether to display the staff option based on if staff results found -->
+                <% if(staffExists != 0){ %>
+                <tr>
+                    
+
+                    <th scope="row">
+                        <label for="staff">Assign Staff to <%= listResults[0].location %></label>
+               
+                        <form action="/stafflocation/<%= locID %>" method="POST" enctype="multipart/form-data">
+                            <select class="form-control form-control-sm" id="staff" name="staff">
+                                <% newStaff.forEach(function(staff) {%>
+                                <option value="<%=staff.staff_id %>"><%= staff.f_name %> <%= staff.l_name %></option>
+                                <% }); %>
+                            </select>
+
+                    </th>
+                    <td>
+                        <button class="btn btn-sm btn-primary">Add Staff</button>
+                        </form>
+                    </td>
+                    
+                </tr>
+
+                <% } else{ %>
+                <!-- no staff so do not display the dropdown -->
+                <% } %>
+
+
+
+            </tbody>
+        </table>
+
+        
+        
+    </div>
+
+<!--Footer Section Here-->
+<% include partials/footer %>

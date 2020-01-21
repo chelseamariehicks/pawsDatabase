@@ -1,0 +1,50 @@
+
+<!-- Partials at Top -->
+<% include partials/header %>
+<% include partials/nav %>
+
+
+<!--Body section here -->
+
+<div class="container">
+    <!-- Top Area -->
+    <div class="row with-margin">
+    </div>
+    <div class="row with-margin">
+        <div class="col-lg-8">
+            <h3>View All Cats</h3>
+
+        </div>
+        <div class="col-lg-4">
+            <a class="btn btn-primary float-right" href="/cats/new">Add New Cat</a>
+        </div>
+    </div>
+
+    <!--Cat Query Results -->
+    <!--responsive, goes from 3 across down to 1 based on screen size -->
+    <div class="row">
+        <% listResults.forEach(function(cat) { %>
+        <div class="col-md-3 col-sm-6 with-margin">
+            <div class="thumbnail">
+                <img class="img-fluid img-thumbnail" src="/images/<%= cat.photo %>">
+            </div>
+            <div class="caption">
+                <!--Make name link to edit dog page -->
+                <h5><a href="/cats/<%=cat.cat_id %>"><%= cat.name %></a></h5>
+                <strong>Sex:</strong> <%=cat.sex %><br>
+                <strong>DOB:</strong> <%= cat.dob %><br>
+                <strong>ID:</strong> <%=cat.cat_id %> <br>
+                <strong>Breed:</strong> <%=cat.breed %><br>
+                <strong>Description:</strong> <%=cat.description %> <br>
+                <strong>Status:</strong> <%=cat.status %> <br>
+                <strong>Location:</strong> <%=cat.l_name %>
+            </div>
+        </div>
+        <% }); %>
+    </div>
+</div>
+
+<!--Footer Section Here-->
+<% include partials/footer %>
+
+

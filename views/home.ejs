@@ -1,0 +1,75 @@
+<!--Partials at top-->
+<% include partials/header %>
+<% include partials/nav %>
+
+<!--Body Section Here-->
+
+<div class="container">
+  <header class="jumbotron">
+    <div class="container">
+      <h1>Paws for Consideration</h1>
+      <h2>Animal and Staff Administration</h2>
+      <p>Select from the menu to view, edit, add or remove from the PFC database. </p>
+    </div>
+  </header>
+  <div class="row">
+  </div>
+  <div class="container-fluid">
+  <div class="row with-margin">
+      <div class="col-lg-8">
+          <h3><%= pageTitle %></h3>
+
+      </div>
+      <div class="col-lg-4">
+          <!-- STATUS POPULATED BASED ON LATEST STATUS VALUES -->
+                    <form class="form-inline float-right" action="/home" method="POST">
+                        <label for="status" class="" style="margin-right: .5em;">Filter By: </label>
+                        <select class="form-control form-control-sm" id="status" name="status" required>
+                          <option value="ALL">All Animals</option>
+                          <% status.forEach(function(item) { %>
+                          <option value="<%= item.st_id %>"><%= item.status %></option>
+                          <% }); %>
+                        </select>
+                        <button class="btn btn-sm btn-primary" style="margin-left: .75em">View</button>
+                    </form>
+      </div>
+      </div>
+  </div>
+
+
+
+    <div class ="container">
+      <div class="table-wrapper">
+        <table class="table table-hovered">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col"></th>
+              <th scope="col">Name</th>
+              <th scope="col">Description</th>
+              <th scope="col">Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% animals.forEach((animal) => { %>
+            <tr>
+              
+              <th scope="row">
+				<img class="img-fluid smallimg" src="/images/<%= animal.photo %>" >
+			        </th>
+              <td><a href="/<%= animal.animaltype %>/<%= animal.id %>"><%= animal.name %></a></td>
+              <td><%= animal.description %></td>
+              <td><%= animal.status %></td>
+            </tr>
+            <% }) %>
+          
+          </tbody>
+        </table>
+      </div>
+    </div>
+</div>
+
+
+
+<!--Footer Section Here-->
+  <% include partials/footer %>
+

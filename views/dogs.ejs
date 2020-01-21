@@ -1,0 +1,47 @@
+<!-- Partials at Top -->
+<% include partials/header %>
+<% include partials/nav %>
+
+
+<!--Body section here -->
+
+<div class="container">
+	<!-- Top Area -->
+	<div class="row with-margin">
+	</div>
+	<div class="row with-margin">
+		<div class="col-lg-8">
+			<h3>View All Dogs</h3>
+			
+		</div>
+		<div class="col-lg-4">
+				<a class="btn btn-primary float-right" href="/dogs/new">Add New Dog</a>
+		</div>
+	</div>
+	
+	<!--Dog Query Results -->
+	<!--responsive, goes from 3 across down to 1 based on screen size -->
+	<div class="row">
+		<% listResults.forEach(function(dog) { %>
+		<div class="col-md-3 col-sm-6 with-margin">
+			<div class="thumbnail">
+				<img class="img-fluid img-thumbnail" src="/images/<%= dog.photo %>" >
+			</div>
+			<div class="caption"><!--Make dog name link to edit dog page -->
+						<h5><a href="/dogs/<%=dog.dog_id %>"><%= dog.name %></a></h5>
+						<strong>Sex:</strong> <%=dog.sex %><br> 
+                        <strong>DOB:</strong> <%= dog.dob %><br>
+						<strong>ID:</strong> <%=dog.dog_id %> <br>
+						<strong>Breed:</strong> <%=dog.breed %> <br>
+						<strong>Description:</strong> <%=dog.description %> <br>
+						<strong>Status:</strong> <%=dog.status %> <br>
+						<strong>Location:</strong> <%=dog.l_name %>
+			</div>
+		</div>
+		<% }); %>
+	</div>
+</div>
+
+<!--Footer Section Here-->
+<% include partials/footer %>
+
